@@ -1,0 +1,17 @@
+[package]
+name = "eq_uilibrium"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/aq2r/eq-uilibrium"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0.92"
+quote = "1.0.37"
+syn = { version = "2.0.89", features = ["full", "extra-traits"] }
+
+[dev-dependencies]
+pretty_assertions = "1.4.1"
