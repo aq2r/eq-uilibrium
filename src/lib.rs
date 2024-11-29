@@ -27,7 +27,7 @@
 //! eq_uilibrium::create_response_msg!(&http, interaction, embed = embed, tts = true).await;
 //! // let message = CreateInteractionResponseMessage::new().embed(embed);
 //! // let builder = CreateInteractionResponse::Message(message);
-//! // interaction.create_response(&ctx.http, builder).await?;
+//! // interaction.create_response(&ctx.http, builder).await;
 //!
 //! /* ----- */
 //! ```
@@ -94,7 +94,7 @@ pub fn send_msg(tokens: TokenStream) -> TokenStream {
 /// eq_uilibrium::create_response_msg!(&http, interaction, embed = embed, tts = true).await;
 /// // let message = CreateInteractionResponseMessage::new().embed(embed);
 /// // let builder = CreateInteractionResponse::Message(message);
-/// // interaction.create_response(&ctx.http, builder).await?;
+/// // interaction.create_response(&ctx.http, builder).await;
 ///
 /// /* ----- */
 /// ```

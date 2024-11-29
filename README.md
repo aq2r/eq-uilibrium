@@ -29,7 +29,7 @@ let embed = CreateEmbed::new().title("embed").description("description");
 eq_uilibrium::create_response_msg!(&http, interaction, embed = embed, tts = true).await;
 // let message = CreateInteractionResponseMessage::new().embed(embed);
 // let builder = CreateInteractionResponse::Message(message);
-// interaction.create_response(&ctx.http, builder).await?;
+// interaction.create_response(&ctx.http, builder).await;
 
 /* ----- */
 ```
