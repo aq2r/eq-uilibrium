@@ -47,35 +47,11 @@ fn create_response_msg_parse(input: ParseStream) -> Result<TokenStream> {
 
     // 最終的に追加する token stream に変換
     let mut result_options = vec![];
-    for (i, opt) in input_msg_options.iter().enumerate() {
+    for opt in input_msg_options {
         let option_name = &opt.option_name;
         let expr = &opt.expr;
 
-        let token = match option_name.to_string().to_lowercase().as_str() {
-            "tts" => quote! { .tts( #expr ) },
-            "add_file" => quote! { .add_file( #expr ) },
-            "add_files" => quote! { .add_files( #expr ) },
-            "files" => quote! { .files( #expr ) },
-            "content" => quote! { .content( #expr ) },
-            "add_embed" => quote! { .add_embed( #expr ) },
-            "add_embeds" => quote! { .add_embeds( #expr ) },
-            "embed" => quote! { .embed( #expr ) },
-            "embeds" => quote! { .embeds( #expr ) },
-            "allowed_mentions" => quote! { .allowed_mentions( #expr ) },
-            "flags" => quote! { .flags( #expr ) },
-            "ephemeral" => quote! { .ephemeral( #expr ) },
-            "components" => quote! { .components( #expr ) },
-            "poll" => quote! { .poll( #expr ) },
-            "button" => quote! { .button( #expr ) },
-            "select_menu" => quote! { .select_menu( #expr ) },
-
-            _ => {
-                return Err(Error::new(
-                    parsed.get(i).unwrap().span(),
-                    format!("Unknown option: {}", option_name),
-                ));
-            }
-        };
+        let token = quote! { . #option_name ( #expr ) };
 
         result_options.push(token);
     }

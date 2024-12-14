@@ -47,42 +47,11 @@ fn send_msg_parse(input: ParseStream) -> Result<TokenStream> {
 
     // 最終的に追加する token stream に変換
     let mut result_options = vec![];
-    for (i, opt) in input_msg_options.iter().enumerate() {
+    for opt in input_msg_options {
         let option_name = &opt.option_name;
         let expr = &opt.expr;
 
-        let token = match option_name.to_string().to_lowercase().as_str() {
-            "content" => quote! { .content( #expr ) },
-            "add_embed" => quote! { .add_embed( #expr ) },
-            "add_embeds" => quote! { .add_embeds( #expr ) },
-            "embed" => quote! { .embed( #expr ) },
-            "embeds" => quote! { .embeds( #expr ) },
-            "tts" => quote! { .tts( #expr ) },
-            "reactions" => quote! { .reactions( #expr ) },
-            "add_file" => quote! { .add_file( #expr ) },
-            "add_files" => quote! { .add_file( #expr ) },
-            "files" => quote! { .files( #expr ) },
-            "allowed_mentions" => quote! { .allowed_mentions( #expr ) },
-            "reference_message" => quote! { .reference_message( #expr ) },
-            "components" => quote! { .components( #expr ) },
-            "button" => quote! { .button( #expr ) },
-            "select_menu" => quote! { .select_menu( #expr ) },
-            "flags" => quote! { .flags( #expr ) },
-            "sticker_id" => quote! { .sticker_id( #expr ) },
-            "sticker_ids" => quote! { .sticker_ids( #expr ) },
-            "add_sticker_id" => quote! { .add_sticker_id( #expr ) },
-            "add_sticker_ids" => quote! { .add_sticker_ids( #expr ) },
-            "nonce" => quote! { .nonce( #expr ) },
-            "enforce_nonce" => quote! { .enforce_nonce( #expr ) },
-            "poll" => quote! { .poll( #expr ) },
-
-            _ => {
-                return Err(Error::new(
-                    parsed.get(i).unwrap().span(),
-                    format!("Unknown option: {}", option_name),
-                ));
-            }
-        };
+        let token = quote! { . #option_name ( #expr ) };
 
         result_options.push(token);
     }
