@@ -34,6 +34,8 @@ eq_uilibrium::create_response_msg!(&http, interaction, embed = embed, tts = true
 /* ----- */
 ```
 
+#
+
 #### Lisense
 
 <sub>
