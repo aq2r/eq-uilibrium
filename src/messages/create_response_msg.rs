@@ -2,10 +2,8 @@ use proc_macro2::TokenStream;
 use quote::quote;
 use syn::{
     parse::{ParseStream, Parser},
-    parse2,
     punctuated::Punctuated,
-    spanned::Spanned,
-    Error, Expr, Ident, Path, Result, Token,
+    Error, Expr, Result, Token,
 };
 
 use super::parse::{eq_channel_parse, parse_ident_dot, parse_option_args, TokenOrErrToken};
