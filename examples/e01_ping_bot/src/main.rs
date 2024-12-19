@@ -22,7 +22,7 @@ impl EventHandler for Handler {
     async fn message(&self, ctx: Context, msg: Message) {
         if msg.content == "!ping" {
             let result =
-                eq_uilibrium::send_msg!(&ctx.http, msg.channel_id, content = "Pong!").await;
+                eq_uilibrium::send_msg!(msg.channel_id, &ctx.http, content = "Pong!").await;
 
             if let Err(err) = result {
                 println!("Error sending message: {err:?}");
@@ -37,7 +37,7 @@ impl EventHandler for Handler {
 
                 if command_name == "ping" {
                     let result =
-                        eq_uilibrium::create_response_msg!(&ctx.http, inter, content = "Pong!")
+                        eq_uilibrium::create_response_msg!(inter, &ctx.http, content = "Pong!")
                             .await;
 
                     if let Err(err) = result {
