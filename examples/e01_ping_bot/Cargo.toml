@@ -6,4 +6,4 @@ edition = "2021"
 [dependencies]
 serenity = "0.12"
 tokio = { version = "1.0", features = ["full"] }
-eq_uilibrium = { git = "https://github.com/aq2r/eq-uilibrium", tag = "v0.1.1" }
+eq_uilibrium = { path = "./../.." }
